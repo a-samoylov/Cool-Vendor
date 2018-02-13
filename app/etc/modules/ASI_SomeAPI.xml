@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <ASI_SomeAPI>
+            <active>true</active>
+            <codePool>local</codePool>
+        </ASI_SomeAPI>
+    </modules>
+</config>
