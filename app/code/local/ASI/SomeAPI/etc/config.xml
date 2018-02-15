@@ -6,7 +6,27 @@
         </ASI_SomeAPI>
     </modules>
     <global>
-
+        <models>
+            <someapi>
+                <class>ASI_SomeAPI_Model</class>
+                <resourceModel>someapi_resource</resourceModel>
+            </someapi>
+            <someapi_resource>
+                <class>ASI_SomeAPI_Resource</class>
+                <entities>
+                    <block>
+                        <table>bearer_tokens</table>
+                    </block>
+                </entities>
+            </someapi_resource>
+        </models>
+        <resources>
+            <someapi_setup>
+                <setup>
+                    <module>ASI_SomeAPI</module>
+                </setup>
+            </someapi_setup>
+        </resources>
     </global>
     <frontend>
         <routers>
