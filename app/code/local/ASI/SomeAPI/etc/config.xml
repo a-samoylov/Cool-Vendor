@@ -6,7 +6,7 @@
         </ASI_SomeAPI>
     </modules>
     <global>
-        <models>
+        <!--<models>
             <someapi>
                 <class>ASI_SomeAPI_Model</class>
                 <resourceModel>someapi_resource</resourceModel>
@@ -26,7 +26,13 @@
                     <module>ASI_SomeAPI</module>
                 </setup>
             </someapi_setup>
-        </resources>
+        </resources>-->
+
+        <helpers>
+            <siteblocks>
+                <class>ASI_SomeAPI_Helper</class>
+            </siteblocks>
+        </helpers>
     </global>
     <frontend>
         <routers>
