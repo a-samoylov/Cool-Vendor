@@ -2,23 +2,19 @@
 
 require_once Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers\Auth\Auth.php';
 require_once Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers\Package\Package.php';
+require_once Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers\APIProcess\APIProcess.php';
 
 class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
     public function indexAction()
     {
-        /*$package = new SomeAPI\conrollers\Package\Package(
-            $this->getRequest()->getHeader('someapi_bearer_token'),
-            $this->getRequest()->getParam('version'),
-            $this->getRequest()->getParam('command'),
-            $this->getRequest()->getParam('params')
-        );*/
-
+        //http://127.0.0.1/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1
+        $input_params = $this->getRequest()->getParams();
         $package = new SomeAPI\conrollers\Package\Package(
-            "test",
-            "1",
-            "get_products",
-            []
+            $this->getRequest()->getHeader('someapi_bearer_token'),
+            $input_params['version'],
+            $input_params['command'],
+            json_decode($input_params['params'])
         );
 
         if(!$package->IsFullPackage()) {
@@ -31,14 +27,24 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             //TODO
             //error
         }
-        //echo Mage::helper('someapi')->__('SomeAPI');
+
+        $apiProcess = new SomeAPI\conrollers\APIProcess\APIProcess(
+            $package->get('version'),
+            $package->get('command'),
+            $package->get('params')
+        );
+
+        $response = $apiProcess->StartProcessing();
+        if(is_array($response)) {
+            echo json_encode($response);
+        } else {
+            //TODO
+            //error
+        }
+
+
 
         //Mage::register('someapi_block', Mage::getModel('someapi_block')->load(1));
         //$blocks = Mage::getModel('someapi/block')->getCollection();
-        //var_dump($blocks[0]);
-
-
-
-        //var_dump($value = Mage::getConfig()->getNode('API'));
     }
 }

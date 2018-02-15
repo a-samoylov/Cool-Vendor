@@ -57,9 +57,9 @@
             <list_commands>
                 <command>
                     <name>GetProducts</name>
-                    <handler>GetProductsV1</handler>
+                    <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductHandler</handler>
                     <validators>
-                        <validator>GetProductsValidator</validator>
+                        <validator>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator>
                     </validators>
                     <properties>
 
