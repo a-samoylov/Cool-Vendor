@@ -25,4 +25,21 @@
     <defalut>
 
     </defalut>
+    <API>
+        <item>
+            <version>1.0</version>
+            <list_commands>
+                <command>
+                    <name>GetProducts</name>
+                    <handler>GetProductsV1</handler>
+                    <validators>
+                        <validator>GetProductsValidator</validator>
+                    </validators>
+                    <properties>
+
+                    </properties>
+                </command>
+            </list_commands>
+        </item>
+    </API>
 </config>

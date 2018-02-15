@@ -6,7 +6,9 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
     public function indexAction()
     {
-        //var_dump($this->getRequest()->getParam('a'));
+        //var_dump($this->getRequest()->getParams('parameters'));
+        $a = $this->getRequest()->getParam('parameters');
+        //var_dump(json_decode($a));
         //var_dump($this->getRequest()->getHeader('Accept'));
         $package = new SomeAPI\conrollers\Package\Package(
             "test",
@@ -16,10 +18,11 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
         );
 
         if(!$package->IsFullPackage()){
+            //TODO
             //error
         }
 
         //var_dump($package);
-        //var_dump($package->get('bearer_token'));
+        //var_dump($value = Mage::getConfig()->getNode('API'));
     }
 }

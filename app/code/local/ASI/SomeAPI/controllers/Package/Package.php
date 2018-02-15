@@ -9,7 +9,7 @@ class Package implements PackageInterface {
     private $isFullPackage = true;
     private $isCreatedPackage = false;
 
-    public function __construct($bearer_token, $version, $command, array $params) {
+    public function __construct($bearer_token, $version, $command, $params) {
         $this->store['bearer_token'] = $bearer_token;
         $this->store['version']      = $version;
         $this->store['command']      = $command;
