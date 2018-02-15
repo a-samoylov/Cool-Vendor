@@ -29,9 +29,9 @@
         </resources>-->
 
         <helpers>
-            <siteblocks>
+            <someapi>
                 <class>ASI_SomeAPI_Helper</class>
-            </siteblocks>
+            </someapi>
         </helpers>
     </global>
     <frontend>

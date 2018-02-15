@@ -21,7 +21,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             []
         );
 
-        if(!$package->IsFullPackage()){
+        if(!$package->IsFullPackage()) {
             //TODO
             //error
         }
@@ -31,11 +31,14 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             //TODO
             //error
         }
-
+        //echo Mage::helper('someapi')->__('SomeAPI');
 
         //Mage::register('someapi_block', Mage::getModel('someapi_block')->load(1));
-        $blocks = Mage::getModel('someapi/block')->getCollection();
-        var_dump($blocks[0]);
+        //$blocks = Mage::getModel('someapi/block')->getCollection();
+        //var_dump($blocks[0]);
+
+
+
         //var_dump($value = Mage::getConfig()->getNode('API'));
     }
 }

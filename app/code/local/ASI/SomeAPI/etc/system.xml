@@ -1,1 +1,57 @@
 <?xml version="1.0"?>
+<config>
+    <tabs>
+        <asi translate="label" module="someapi">
+            <label>ASI_SomeAPI</label>
+            <sort_order>1</sort_order>
+        </asi>
+    </tabs>
+    <sections>
+        <someapi module="someapi" translate="label">
+            <label>SomeAPI</label>
+            <tab>asi</tab>
+            <frontend>text</frontend>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings module="someapi" translate="label">
+                    <label>Send Report</label>
+                    <expanded>1</expanded>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_Website>1</show_in_Website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <name translate="label comment" module="someapi">
+                            <label>Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_Website>1</show_in_Website>
+                            <show_in_store>1</show_in_store>
+                        </name>
+                        <description translate="label comment" module="someapi">
+                            <label>Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_Website>1</show_in_Website>
+                            <show_in_store>1</show_in_store>
+                        </description>
+                        <button translate="label comment" module="someapi">
+                            <frontend_type>button</frontend_type>
+                            <!--<frontend_model>someapi/button</frontend_model>-->
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_Website>1</show_in_Website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Description your problem and send email</comment>
+                        </button>
+                    </fields>
+                </settings>
+            </groups>
+        </someapi>
+    </sections>
+</config>
