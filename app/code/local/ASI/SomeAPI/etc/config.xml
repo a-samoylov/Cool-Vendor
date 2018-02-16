@@ -34,7 +34,7 @@
         </resources>
         <helpers>
             <someapi>
-                <class>ASI_SomeAPI_Helper_Data</class>
+                <class>ASI_SomeAPI_Helper</class>
             </someapi>
         </helpers>
     </global>
@@ -61,7 +61,7 @@
             <list_commands>
                 <command1>
                     <name>GetProducts</name>
-                    <handler>GetProductHandler</handler>
+                    <handler>GetProductsHandler</handler>
                     <validators>
                         <validator>GetProductsValidator</validator>
                     </validators>

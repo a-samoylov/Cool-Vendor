@@ -11,4 +11,12 @@ class Exception {
     public function PrintExeptionJSON() {
         die(json_encode($this));
     }
+
+    public function PrintExeptionXML($Mage) {
+        die($Mage::helper('someapi')->arrayToXml(
+            array(
+                'error' => $this->error)
+            )
+        );
+    }
 }

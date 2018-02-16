@@ -13,12 +13,10 @@ use \SomeAPI\conrollers\Package\Package;
 use \SomeAPI\conrollers\Exception\Exception;
 
 class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
-    public function indexAction()
-    {
-        //http://127.0.0.1/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1.0
+    public function indexAction() {
         $input_params = $this->getRequest()->getParams();
         $package = new Package(
-            '123',//$this->getRequest()->getHeader('someapi_bearer_token')
+            $this->getRequest()->getHeader('someapi_bearer_token'),
             $input_params['version'],
             $input_params['command'],
             json_decode($input_params['params'])

@@ -43,7 +43,7 @@ class APIProcess {
         }
 
         //create handler
-        $handler =(new FactoryHandler())->create($this->handler);
+        $handler = (new FactoryHandler())->create($this->handler);
         return $handler->Run($this->Mage, $this->params);
     }
 }
