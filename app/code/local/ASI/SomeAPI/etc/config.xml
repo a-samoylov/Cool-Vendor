@@ -6,13 +6,18 @@
         </ASI_SomeAPI>
     </modules>
     <global>
-        <!--<models>
+        <blocks>
+            <someapi>
+                <class>ASI_SomeAPI_Block</class>
+            </someapi>
+        </blocks>
+        <models>
             <someapi>
                 <class>ASI_SomeAPI_Model</class>
                 <resourceModel>someapi_resource</resourceModel>
             </someapi>
             <someapi_resource>
-                <class>ASI_SomeAPI_Resource</class>
+                <class>ASI_SomeAPI_Model_Resource</class>
                 <entities>
                     <block>
                         <table>bearer_tokens</table>
@@ -26,11 +31,10 @@
                     <module>ASI_SomeAPI</module>
                 </setup>
             </someapi_setup>
-        </resources>-->
-
+        </resources>
         <helpers>
             <someapi>
-                <class>ASI_SomeAPI_Helper</class>
+                <class>ASI_SomeAPI_Helper_Data</class>
             </someapi>
         </helpers>
     </global>
@@ -57,9 +61,9 @@
             <list_commands>
                 <command1>
                     <name>GetProducts</name>
-                    <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductHandler</handler>
+                    <handler>GetProductHandler</handler>
                     <validators>
-                        <validator>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator>
+                        <validator>GetProductsValidator</validator>
                     </validators>
                     <properties>
 
@@ -68,9 +72,9 @@
 
                 <command2>
                     <name>GetProducts22</name>
-                    <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductHandler</handler>
+                    <handler>GetProductHandler</handler>
                     <validators>
-                        <validator>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator>
+                        <validator>GetProductsValidator</validator>
                     </validators>
                     <properties>
 
@@ -84,10 +88,10 @@
             <list_commands>
                 <command2>
                     <name>GetProducts</name>
-                    <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductsHandler</handler>
+                    <handler>GetProductsHandler</handler>
                     <validators>
-                        <validator1>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator1>
-                        <validator2>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator2>
+                        <validator1>GetProductsValidator</validator1>
+                        <validator2>GetProductsValidator</validator2>
                     </validators>
                     <properties>
 

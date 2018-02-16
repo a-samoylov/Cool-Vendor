@@ -11,7 +11,8 @@ class GetProductsHandler implements HandlerInterface {
 
     public function Run($params)
     {
-        echo 'hi';
-        // TODO: Implement Run() method.
+        // TODO
+        echo 'HI';
+        return [];
     }
 }

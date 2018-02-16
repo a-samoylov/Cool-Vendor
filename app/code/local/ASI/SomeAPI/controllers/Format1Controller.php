@@ -9,6 +9,9 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
     public function indexAction()
     {
+        /*$blocks = Mage::getModel('someapi/block')->getCollection();
+        var_dump($blocks->getData());
+        die();*/
         //http://127.0.0.1/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1.0
         $input_params = $this->getRequest()->getParams();
         $package = new SomeAPI\conrollers\Package\Package(
@@ -29,6 +32,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             //error
         }
 
+        //SomeAPI\conrollers\APIProcess\APIProcess
         $apiProcess = new APIProcess(
             $package->get('version'),
             $package->get('command'),
@@ -37,14 +41,10 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
         $response = $apiProcess->StartProcessing();
         if(is_array($response)) {
-            //echo json_encode($response);
+            echo json_encode($response);
         } else {
             //TODO
             //error not found command or invalid params
         }
-
-
-        //Mage::register('someapi_block', Mage::getModel('someapi_block')->load(1));
-        //$blocks = Mage::getModel('someapi/block')->getCollection();
     }
 }
