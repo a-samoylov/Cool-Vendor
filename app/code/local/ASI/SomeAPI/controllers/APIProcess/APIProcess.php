@@ -33,8 +33,6 @@ class APIProcess {
         }
 
         //create validators
-        $f = new FactoryValidators();
-
         $validators = (new FactoryValidators())->Create($this->validators);
 
         foreach ($validators as $key => $validator) {

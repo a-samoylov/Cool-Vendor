@@ -47,7 +47,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             echo json_encode($response);
         } else {
             //error not found command or invalid params
-            (new Exception("Not found command in it version or invalid params"))->PrintExeptionJSON();
+            (new Exception("Not found command in this version api or invalid params"))->PrintExeptionJSON();
         }
     }
 }

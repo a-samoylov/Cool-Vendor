@@ -9,9 +9,12 @@ class GetProductsHandler implements HandlerInterface {
 
     }
 
-    public function Run($Mage, $params)    {
+    public function Run($Mage, $params) {
+        $products = $Mage::getModel('catalog/product')->getCollection()->getData();
+        rsort($products);//TODO optimizette
+
         return array_slice(
-            $Mage::getModel('catalog/product')->getCollection()->getData(),
+            $products,
             0 ,
             $params->limit
         );
