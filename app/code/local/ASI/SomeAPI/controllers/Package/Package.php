@@ -20,9 +20,10 @@ class Package implements PackageInterface {
             $version         == '' ||
             $command         == ''
         ) {
-            $isFullPackage = false;
+            $this->isFullPackage = false;
         }
-        $isCreatedPackage = true;
+
+        $this->isCreatedPackage = true;
     }
 
     public function set($key, $value){
@@ -36,6 +37,6 @@ class Package implements PackageInterface {
     }
 
     public function IsFullPackage(){
-        return this.isCreatedPackage && this.isFullPackage;
+        return $this->isCreatedPackage && $this->isFullPackage;
     }
 }

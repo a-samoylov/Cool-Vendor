@@ -4,14 +4,26 @@ namespace SomeAPI\conrollers\Auth;
 require_once 'AuthInterface.php';
 
 class Auth implements AuthInterface {
-    private $bearer_token;
+    //private $bearer_token;
+    private $isUserAuthorized = false;
 
-    public function __construct($bearer_token) {
-        $this->bearer_token = $bearer_token;
+    public function __construct($Mage, $bearer_token) {
+        //$this->bearer_token = $bearer_token;
+
+        if(!$bearer_token) {
+            return;
+        }
+
+        $tokens = $Mage::getModel('someapi/block')->getCollection()->getData();
+        foreach ($tokens as $key => $token) {
+            if($token['value'] == $bearer_token) {
+                $this->isUserAuthorized = true;
+                break;
+            }
+        }
     }
 
     public function IsUserAuthorized() {
-        //TODO
-        return true;
+        return $this->isUserAuthorized;
     }
 }

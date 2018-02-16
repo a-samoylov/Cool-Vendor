@@ -9,10 +9,11 @@ class GetProductsHandler implements HandlerInterface {
 
     }
 
-    public function Run($params)
-    {
-        // TODO
-        echo 'HI';
-        return [];
+    public function Run($Mage, $params)    {
+        return array_slice(
+            $Mage::getModel('catalog/product')->getCollection()->getData(),
+            0 ,
+            $params->limit
+        );
     }
 }

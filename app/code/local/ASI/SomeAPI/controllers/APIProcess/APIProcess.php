@@ -12,8 +12,10 @@ class APIProcess {
     private $handler;
     private $validators;
     private $params;
+    private $Mage;
 
     public function __construct($Mage, $version, $command, $params) {
+        $this->Mage = $Mage;
         $api_configs = new APIConfig(
             $Mage::getConfig()->getNode('API')->asArray()
         );
@@ -44,6 +46,6 @@ class APIProcess {
 
         //create handler
         $handler =(new FactoryHandler())->create($this->handler);
-        return $handler->Run($this->params);
+        return $handler->Run($this->Mage, $this->params);
     }
 }
