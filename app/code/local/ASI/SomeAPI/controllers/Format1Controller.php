@@ -4,14 +4,11 @@ define('ROOT', Mage::getBaseDir());
 require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\Auth\Auth.php';
 require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\Package\Package.php';
 require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\APIProcess\APIProcess.php';
+require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\Definition\APIConfig.php';
 
 class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
-
     public function indexAction()
     {
-        /*$blocks = Mage::getModel('someapi/block')->getCollection();
-        var_dump($blocks->getData());
-        die();*/
         //http://127.0.0.1/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1.0
         $input_params = $this->getRequest()->getParams();
         $package = new SomeAPI\conrollers\Package\Package(
@@ -32,8 +29,8 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             //error
         }
 
-        //SomeAPI\conrollers\APIProcess\APIProcess
-        $apiProcess = new APIProcess(
+        $apiProcess = new SomeAPI\conrollers\APIProcess\APIProcess(
+            Mage,
             $package->get('version'),
             $package->get('command'),
             $package->get('params')
