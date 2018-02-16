@@ -1,14 +1,15 @@
 <?php
 
-require_once Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers\Auth\Auth.php';
-require_once Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers\Package\Package.php';
-require_once Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers\APIProcess\APIProcess.php';
+define('ROOT', Mage::getBaseDir());
+require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\Auth\Auth.php';
+require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\Package\Package.php';
+require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\APIProcess\APIProcess.php';
 
 class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
     public function indexAction()
     {
-        //http://127.0.0.1/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1
+        //http://127.0.0.1/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1.0
         $input_params = $this->getRequest()->getParams();
         $package = new SomeAPI\conrollers\Package\Package(
             $this->getRequest()->getHeader('someapi_bearer_token'),
@@ -28,7 +29,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             //error
         }
 
-        $apiProcess = new SomeAPI\conrollers\APIProcess\APIProcess(
+        $apiProcess = new APIProcess(
             $package->get('version'),
             $package->get('command'),
             $package->get('params')
@@ -36,12 +37,11 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
         $response = $apiProcess->StartProcessing();
         if(is_array($response)) {
-            echo json_encode($response);
+            //echo json_encode($response);
         } else {
             //TODO
             //error
         }
-
 
 
         //Mage::register('someapi_block', Mage::getModel('someapi_block')->load(1));

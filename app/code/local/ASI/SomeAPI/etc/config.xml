@@ -52,10 +52,10 @@
 
     </defalut>
     <API>
-        <item>
+        <api_v1>
             <version>1.0</version>
             <list_commands>
-                <command>
+                <command1>
                     <name>GetProducts</name>
                     <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductHandler</handler>
                     <validators>
@@ -64,8 +64,36 @@
                     <properties>
 
                     </properties>
-                </command>
+                </command1>
+
+                <command2>
+                    <name>GetProducts22</name>
+                    <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductHandler</handler>
+                    <validators>
+                        <validator>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator>
+                    </validators>
+                    <properties>
+
+                    </properties>
+                </command2>
             </list_commands>
-        </item>
+        </api_v1>
+
+        <api_v2>
+            <version>2.0</version>
+            <list_commands>
+                <command2>
+                    <name>GetProducts</name>
+                    <handler>SomeAPI\conrollers\APIProcess\Handlers\GetProductHandler22</handler>
+                    <validators>
+                        <validator1>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator1>
+                        <validator2>SomeAPI\conrollers\APIProcess\Validators\GetProductsValidator</validator2>
+                    </validators>
+                    <properties>
+
+                    </properties>
+                </command2>
+            </list_commands>
+        </api_v2>
     </API>
 </config>
