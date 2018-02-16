@@ -20,7 +20,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
 
         if(!$package->IsFullPackage()) {
             //TODO
-            //error
+            //error package not full
         }
 
         $auth = new SomeAPI\conrollers\Auth\Auth($package->get('bearer_token'));
@@ -40,7 +40,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             //echo json_encode($response);
         } else {
             //TODO
-            //error
+            //error not found command or invalid params
         }
 
 

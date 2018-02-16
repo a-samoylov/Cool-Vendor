@@ -1,10 +1,13 @@
 <?php
+//из-за namespace ошибка ппри добавлении Mage.php
 //namespace SomeAPI\conrollers\APIProcess;
 
 require_once('.\app\Mage.php');
 define('ROOT', Mage::getBaseDir());
 
 require_once ROOT . '\app\code\local\ASI\SomeAPI\controllers\Definition\APIConfig.php';
+require_once 'Validators\FactoryValidators.php';
+require_once 'Handlers\FactoryHandler.php';
 
 class APIProcess {
     private $handler;
@@ -21,12 +24,25 @@ class APIProcess {
         $this->validators   = $api_configs->GetValidators($version, $command);
     }
 
-    //bool
+    //return array or if exeption false
     public function StartProcessing() {
-        //TODO
-        //$api = $value = Mage::getConfig()->getNode('API');
-        //var_dump($api);
+        if($this->handler == '') {
+            //error no handler
+            return false;
+        }
 
-        return [];
+        //create validators
+        $validators = (new SomeAPI\conrollers\APIProcess\Validators\FactoryValidators())
+            ->Create($this->validators);
+        foreach ($validators as $key => $validator) {
+            if(!$validator->Validate($this->params)) {
+                //error validate
+                return false;
+            }
+        }
+
+        //create handler
+        $handler =(new SomeAPI\conrollers\APIProcess\Handlers\FactoryHandler())->create($this->handler);
+        return $handler->Run($this->params);
     }
 }

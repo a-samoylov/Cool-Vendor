@@ -35,6 +35,7 @@ class APIConfig {
         }
     }
 
+    //TODO Refactoring
     public function GetHandler($version, $command) {
         for ($i = 0; $i < count($this->configs_api); $i++ ) {
             if($this->configs_api[$i]['version'] == $version) {
@@ -49,6 +50,7 @@ class APIConfig {
         return '';
     }
 
+    //TODO Refactoring
     public function GetValidators($version, $command) {
         for ($i = 0; $i < count($this->configs_api); $i++ ) {
             if($this->configs_api[$i]['version'] == $version) {
@@ -60,6 +62,6 @@ class APIConfig {
             }
         }
 
-        return '';
+        return [];
     }
 }

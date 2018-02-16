@@ -14,9 +14,10 @@ class GetProductsValidator implements ValidatorInterface {
 
     public function Validate($params)
     {
-        if(!isset($params->limit) &&
-            $params->limit > LIMIT_MIN &&
-            $params->limit < LIMIT_MAX){
+        if(isset($params->limit) &&
+            $params->limit > GetProductsValidator::LIMIT_MIN &&
+            $params->limit < GetProductsValidator::LIMIT_MAX){
+
             return true;
         }
 

@@ -3,14 +3,15 @@ namespace SomeAPI\conrollers\APIProcess\Handlers;
 
 require_once 'HandlerInterface.php';
 
-class GetProductHandler implements HandlerInterface {
+class GetProductsHandler implements HandlerInterface {
 
     public function __construct() {
 
     }
 
-    public function Run()
+    public function Run($params)
     {
+        echo 'hi';
         // TODO: Implement Run() method.
     }
 }
