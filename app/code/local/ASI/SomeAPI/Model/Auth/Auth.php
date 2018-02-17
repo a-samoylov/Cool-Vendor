@@ -12,7 +12,7 @@ class Auth {
             return;
         }
 
-        $tokens = $Mage::getModel('someapi/block')->getCollection()->getData();
+        $tokens = $Mage::getModel('someapi/bearertokens')->getCollection()->getData();
         foreach ($tokens as $key => $token) {
             if($token['value'] == $bearer_token) {
                 $this->isUserAuthorized = true;

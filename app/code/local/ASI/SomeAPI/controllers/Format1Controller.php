@@ -16,7 +16,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
     public function indexAction() {
         $input_params = $this->getRequest()->getParams();
         $package = new Package(
-            $this->getRequest()->getHeader('someapi_bearer_token'),
+            '123',//$this->getRequest()->getHeader('someapi_bearer_token'),
             $input_params['version'],
             $input_params['command'],
             json_decode($input_params['params'])

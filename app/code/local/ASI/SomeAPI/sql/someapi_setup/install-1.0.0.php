@@ -4,7 +4,7 @@ $installer = $this;
 $installer->startSetup();
 
 $installer->run("
-    CREATE TABLE IF NOT EXISTS `{$this->getTable('someapi/block')}` (
+    CREATE TABLE IF NOT EXISTS `{$this->getTable('someapi/bearertokens')}` (
         bearer_token_id int(11) NOT NULL AUTO_INCREMENT,
         value varchar(255) DEFAULT NULL,
         PRIMARY KEY (bearer_token_id)

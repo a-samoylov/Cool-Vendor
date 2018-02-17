@@ -6,11 +6,11 @@
         </ASI_SomeAPI>
     </modules>
     <global>
-        <blocks>
+        <bearertokens>
             <someapi>
-                <class>ASI_SomeAPI_Block</class>
+                <class>ASI_SomeAPI_BearerTokens</class>
             </someapi>
-        </blocks>
+        </bearertokens>
         <models>
             <someapi>
                 <class>ASI_SomeAPI_Model</class>
@@ -19,9 +19,9 @@
             <someapi_resource>
                 <class>ASI_SomeAPI_Model_Resource</class>
                 <entities>
-                    <block>
+                    <bearertokens>
                         <table>bearer_tokens</table>
-                    </block>
+                    </bearertokens>
                 </entities>
             </someapi_resource>
         </models>
