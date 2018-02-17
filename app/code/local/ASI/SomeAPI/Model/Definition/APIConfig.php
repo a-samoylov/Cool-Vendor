@@ -1,5 +1,5 @@
 <?php
-namespace SomeAPI\conrollers\Definition;
+namespace SomeAPI\Model\Definition;
 
 class APIConfig {
     private $configs_api = [];//config api from xml

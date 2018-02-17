@@ -1,7 +1,7 @@
 <?php
 namespace SomeAPI\conrollers\APIProcess\Handlers;
 
-class FactoryHandler {
+class HandlerFactory {
     private $namespace_handler = 'SomeAPI\conrollers\APIProcess\Handlers\\';
 
     public function __construct() {

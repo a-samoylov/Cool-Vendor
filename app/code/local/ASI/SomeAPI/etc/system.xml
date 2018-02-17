@@ -40,14 +40,14 @@
                             <show_in_Website>1</show_in_Website>
                             <show_in_store>1</show_in_store>
                         </description>
-                        <button translate="label comment" module="someapi">
+                        <!--<button translate="label comment" module="someapi">
                             <frontend_type>button</frontend_type>
                             <frontend_model>someapi/button</frontend_model>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_Website>1</show_in_Website>
                             <show_in_store>1</show_in_store>
-                            <comment>Press 'Save config' and then 'Send Report'</comment>
+                            <comment>Press 'Save config' and then 'Send Report'</comment>-->
                         </button>
                     </fields>
                 </settings>

@@ -1,8 +1,8 @@
 <?php
-namespace SomeAPI\conrollers\APIProcess\Validators;
+namespace SomeAPI\Model\APIProcess\Validators;
 
-class FactoryValidators {
-    private $namespace_validator = 'SomeAPI\conrollers\APIProcess\Validators\\';
+class ValidatorsFactory {
+    private $namespace_validator = 'SomeAPI\Model\APIProcess\Validators\\';
 
     public function __construct() {
 

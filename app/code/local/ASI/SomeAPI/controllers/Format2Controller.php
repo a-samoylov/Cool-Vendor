@@ -13,9 +13,8 @@ use \SomeAPI\conrollers\Package\Package;
 use \SomeAPI\conrollers\Exception\Exception;
 
 class ASI_SomeAPI_Format2Controller extends Mage_Core_Controller_Front_Action {
-
     public function indexAction() {
-        $dataPOST = trim(file_get_contents('php://input'));
+        /*$dataPOST = trim(file_get_contents('php://input'));
         $dataPOST = json_decode($dataPOST);
 
         $package = new Package(
@@ -50,6 +49,6 @@ class ASI_SomeAPI_Format2Controller extends Mage_Core_Controller_Front_Action {
         } else {
             //error not found command or invalid params
             (new Exception("Not found command in this version api or invalid params"))->PrintExeptionXML(Mage);
-        }
+        }*/
     }
 }

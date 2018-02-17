@@ -1,5 +1,5 @@
 <?php
-namespace SomeAPI\conrollers\Package;
+namespace SomeAPI\Model\Package;
 
 class Package {
 

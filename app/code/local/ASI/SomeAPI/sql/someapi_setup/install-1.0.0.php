@@ -12,3 +12,4 @@ $installer->run("
 ");
 
 $installer->endSetup();
+

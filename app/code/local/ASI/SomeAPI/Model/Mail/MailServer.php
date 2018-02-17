@@ -1,5 +1,5 @@
 <?php
-namespace SomeAPI\conrollers\Mail;
+namespace SomeAPI\Model\Mail;
 
 
 class MailServer {
@@ -9,7 +9,7 @@ class MailServer {
         $this->email = $Mage::getConfig()->getNode('email')->asArray();
     }
 
-    public function SendEmail($Mage, $name, $description) {
+    public function sendEmail($Mage, $name, $description) {
         $text = "Name '$name' Description '$description'";
 
         $mail = $Mage::getModel('core/email');

@@ -1,5 +1,5 @@
 <?php
-namespace SomeAPI\conrollers\Exception;
+namespace SomeAPI\Model\Exception;
 
 class Exception {
     public $error;

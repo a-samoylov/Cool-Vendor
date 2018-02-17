@@ -1,11 +1,11 @@
 <?php
-namespace SomeAPI\conrollers\APIProcess;
+namespace SomeAPI\Model\APIProcess;
 
-require_once 'Validators/FactoryValidators.php';
-require_once 'Handlers/FactoryHandler.php';
+require_once 'Handlers/HandlerFactory.php';
+require_once 'Validators/ValidatorsFactory.php';
 
-use SomeAPI\conrollers\APIProcess\Handlers\FactoryHandler;
-use SomeAPI\conrollers\APIProcess\Validators\FactoryValidators;
+use SomeAPI\conrollers\APIProcess\Handlers\HandlerFactory;
+use SomeAPI\conrollers\APIProcess\Validators\ValidatorsFactory;
 use SomeAPI\conrollers\Definition\APIConfig;
 
 class APIProcess {
@@ -33,7 +33,7 @@ class APIProcess {
         }
 
         //create validators
-        $validators = (new FactoryValidators())->Create($this->validators);
+        $validators = (new ValidatorsFactory())->Create($this->validators);
 
         foreach ($validators as $key => $validator) {
             if(!$validator->Validate($this->params)) {
@@ -43,7 +43,7 @@ class APIProcess {
         }
 
         //create handler
-        $handler = (new FactoryHandler())->create($this->handler);
+        $handler = (new HandlerFactory())->create($this->handler);
         return $handler->Run($this->Mage, $this->params);
     }
 }
