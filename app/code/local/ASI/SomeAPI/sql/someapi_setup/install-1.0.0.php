@@ -4,11 +4,11 @@ $installer = $this;
 $installer->startSetup();
 
 $installer->run("
-CREATE TABLE IF NOT EXISTS `{$this->getTable('someapi/block')}` (
-    bearer_token_id int(11) NOT NULL AUTO_INCREMENT,
-    value varchar(255) DEFAULT NULL,
-    PRIMARY KEY (bearer_token_id)
-) ENGINE = INNODB DEFAULT CHARSET=utf8;
+    CREATE TABLE IF NOT EXISTS `{$this->getTable('someapi/block')}` (
+        bearer_token_id int(11) NOT NULL AUTO_INCREMENT,
+        value varchar(255) DEFAULT NULL,
+        PRIMARY KEY (bearer_token_id)
+    ) ENGINE = INNODB DEFAULT CHARSET=utf8;
 ");
 
 $installer->endSetup();

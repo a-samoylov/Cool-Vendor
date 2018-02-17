@@ -1,6 +1,6 @@
 <?php
 
-define('ROOT', Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers');
+define('ROOT', Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\Model');
 require_once ROOT . '\Auth\Auth.php';
 require_once ROOT . '\Package\Package.php';
 require_once ROOT . '\APIProcess\APIProcess.php';

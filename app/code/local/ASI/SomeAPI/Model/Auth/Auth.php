@@ -1,9 +1,7 @@
 <?php
 namespace SomeAPI\conrollers\Auth;
 
-require_once 'AuthInterface.php';
-
-class Auth implements AuthInterface {
+class Auth {
     //private $bearer_token;
     private $isUserAuthorized = false;
 

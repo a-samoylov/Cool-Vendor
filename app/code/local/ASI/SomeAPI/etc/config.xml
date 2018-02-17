@@ -60,7 +60,7 @@
             <version>1.0</version>
             <list_commands>
                 <command1>
-                    <name>GetProducts</name>
+                    <name>GetLastProducts</name>
                     <handler>GetProductsHandler</handler>
                     <validators>
                         <validator>GetProductsValidator</validator>
@@ -100,5 +100,5 @@
             </list_commands>
         </api_v2>
     </API>
-    <email>alexsaw136@gmail.com</email>
+    <email>someemail@gmail.com</email>
 </config>

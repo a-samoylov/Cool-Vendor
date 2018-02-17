@@ -1,5 +1,5 @@
 <?php
-define('ROOT', Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\controllers');
+define('ROOT', Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\Model');
 require_once ROOT . '\Mail\MailServer.php';
 
 use SomeAPI\conrollers\Mail\MailServer;

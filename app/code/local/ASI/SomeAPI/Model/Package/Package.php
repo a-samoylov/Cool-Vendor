@@ -1,9 +1,7 @@
 <?php
 namespace SomeAPI\conrollers\Package;
 
-require_once 'PackageInterface.php';
-
-class Package implements PackageInterface {
+class Package {
 
     private $store = [];
     private $isFullPackage = true;
