@@ -32,6 +32,10 @@ class APIConfigFactory {
             }
         }
 
+        if($handler_name == '') {
+            throw new \Exception('Command not found');
+        }
+
         return new APIConfig(
             $handler_name,
             $validators_names,

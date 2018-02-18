@@ -1,61 +1,48 @@
 <?php
-
 define('ROOT', Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\Model');
-require_once ROOT . '\Auth\Auth.php';
+require_once ROOT . '\Auth\AuthFactory.php';
 require_once ROOT . '\Package\Package.php';
-require_once ROOT . '\APIProcess\APIProcess.php';
-require_once ROOT . '\Definition\APIConfig.php';
-require_once ROOT . '\Exception\Exception.php';
+require_once ROOT . '\APIProcess\APIProcessFactory.php';
+require_once ROOT . '\Definition\APIConfigFactory.php';
+require_once ROOT . '\Package\PackageFormat2Factory.php';
 
-use \SomeAPI\conrollers\APIProcess\APIProcess;
-use \SomeAPI\conrollers\Auth\Auth;
-use \SomeAPI\conrollers\Package\Package;
-use \SomeAPI\conrollers\Exception\Exception;
+use \SomeAPI\Model\Package\PackageFormat2Factory;
+use \SomeAPI\Model\Auth\AuthFactory;
+use \SomeAPI\Model\APIProcess\APIProcessFactory;
 
 class ASI_SomeAPI_Format2Controller extends Mage_Core_Controller_Front_Action {
     public function indexAction() {
+        try {
+            $dataPOST = trim(file_get_contents('php://input'));
 
-        /*$Mage::helper('someapi')->arrayToXml(
-        array(
-            'error' => $this->error)
-        )*/
-
-
-        /*$dataPOST = trim(file_get_contents('php://input'));
-        $dataPOST = json_decode($dataPOST);
-
-        $package = new Package(
-            $this->getRequest()->getHeader('someapi_bearer_token'),
-            $dataPOST->version,
-            $dataPOST->command,
-            $dataPOST->params
-        );
-
-
-        if(!$package->IsFullPackage()) {
-            //error package not full
-            (new Exception("Error no api version, bearer token or command specified"))->PrintExeptionXML(Mage);
+            $package = (new PackageFormat2Factory)->create(
+                $this->getRequest()->getHeader('someapi_bearer_token'),
+                $dataPOST
+            );
+        } catch (Exception $exception) {
+            echo Mage::helper('someapi')->arrayToXml(array('error' => $exception->getMessage()));
+            return;
         }
 
-        $auth = new Auth(Mage, $package->get('bearer_token'));
-        if(!$auth->IsUserAuthorized()) {
+        $auth = (new AuthFactory())->create($package->get('bearer_token'));
+        if(!$auth->isUserAuthorized()) {
             //error
-            (new Exception("Not valid bearer token"))->PrintExeptionXML(Mage);
+            echo Mage::helper('someapi')->arrayToXml(array('error' => "Invalid bearer token"));
+            return;
         }
 
-        $apiProcess = new APIProcess(
-            Mage,
-            $package->get('version'),
-            $package->get('command'),
-            $package->get('params')
-        );
+        try {
+            $apiProcess = (new APIProcessFactory())
+                ->create(
+                    $package->get('version'),
+                    $package->get('command'),
+                    $package->get('params')
+                );
 
-        $response = $apiProcess->StartProcessing();
-        if(is_array($response)) {
-            echo Mage::helper('someapi')->arrayToXml($response);
-        } else {
-            //error not found command or invalid params
-            (new Exception("Not found command in this version api or invalid params"))->PrintExeptionXML(Mage);
-        }*/
+            echo Mage::helper('someapi')->arrayToXml($apiProcess->startProcessing());
+        } catch (Exception $exception) {
+            echo Mage::helper('someapi')->arrayToXml(array('error' => $exception->getMessage()));
+            return;
+        }
     }
 }

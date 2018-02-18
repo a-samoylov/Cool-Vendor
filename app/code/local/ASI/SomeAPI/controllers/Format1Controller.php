@@ -30,14 +30,14 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
             return;
         }
 
-        $apiProcess = (new APIProcessFactory())
-            ->create(
-                $package->get('version'),
-                $package->get('command'),
-                $package->get('params')
-            );
-
         try {
+            $apiProcess = (new APIProcessFactory())
+                ->create(
+                    $package->get('version'),
+                    $package->get('command'),
+                    $package->get('params')
+                );
+
             echo json_encode($apiProcess->startProcessing());
         } catch (Exception $exception) {
             echo json_encode(array("error" => $exception->getMessage()));
