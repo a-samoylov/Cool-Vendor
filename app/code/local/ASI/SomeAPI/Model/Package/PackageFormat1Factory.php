@@ -17,11 +17,11 @@ class PackageFormat1Factory {
         }
 
         if($paramsPackage['version'] == '') {
-            throw new \Exception('Invalid bearer version');
+            throw new \Exception('Invalid version');
         }
 
         if($paramsPackage['command'] == '') {
-            throw new \Exception('Invalid bearer command');
+            throw new \Exception('Invalid command');
         }
 
 

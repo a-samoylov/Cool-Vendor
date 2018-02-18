@@ -6,21 +6,16 @@ require_once 'Validators/ValidatorFactory.php';
 
 use SomeAPI\Model\APIProcess\Handlers\HandlerFactory;
 use SomeAPI\Model\APIProcess\Validators\ValidatorFactory;
-use SomeAPI\Model\Definition\APIConfig;
 
 class APIProcess {
     private $handler_name;
     private $validators_names = [];
     private $params;
 
-    public function __construct($version, $command, $params) {
-        $api_configs = new APIConfig(
-            \Mage::getConfig()->getNode('API')->asArray()
-        );
-
-        $this->params               = $params;
-        $this->handler_name         = $api_configs->getHandler($version, $command);
-        $this->validators_names     = $api_configs->getValidators($version, $command);
+    public function __construct($handler_name, $validators_names, $params) {
+        $this->params           = $params;
+        $this->handler_name     = $handler_name;
+        $this->validators_names = $validators_names;
     }
 
     //return array or if exeption false

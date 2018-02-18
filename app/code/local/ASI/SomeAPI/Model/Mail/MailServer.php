@@ -1,30 +1,30 @@
 <?php
 namespace SomeAPI\Model\Mail;
 
-
 class MailServer {
     private $email;
+    private $name;
+    private $description;
 
-    public function __construct($Mage) {
-        $this->email = $Mage::getConfig()->getNode('email')->asArray();
+    public function __construct($email, $name, $description) {
+        $this->email        = $email;
+        $this->name         = $name;
+        $this->description  = $description;
     }
 
-    public function sendEmail($Mage, $name, $description) {
-        $text = "Name '$name' Description '$description'";
+    public function sendEmail() {
+        $text = "Name '$this->name' Description '$this->description'";
 
-        $mail = $Mage::getModel('core/email');
+        $mail = \Mage::getModel('core/email');
         $mail->setToEmail($this->email);
         $mail->setBody($text);
         $mail->setType('html');
 
         try {
             $mail->send();
-            Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
-            $this->_redirect('');
         }
         catch (Exception $e) {
-            Mage::getSingleton('core/session')->addError('Unable to send.');
-            $this->_redirect('');
+            throw new \Exception('Error mail don\'t send');
         }
     }
 }
