@@ -87,13 +87,14 @@
             <version>2.0</version>
             <list_commands>
                 <command2>
-                    <name>GetProducts</name>
+                    <name>GetLastProducts</name>
                     <handler>GetProductsHandler</handler>
                     <validators>
                         <validator1>LimitValidator</validator1>
                     </validators>
                     <properties>
                         <sort>DESC</sort>
+                        <!--<limit>1</limit>  Для теста-->
                     </properties>
                 </command2>
             </list_commands>

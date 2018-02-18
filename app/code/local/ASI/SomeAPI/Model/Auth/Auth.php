@@ -8,7 +8,7 @@ class Auth {
         $this->bearer_token = $bearer_token;
     }
 
-    public function IsUserAuthorized() {
+    public function isUserAuthorized() {
         $tokens = \Mage::getModel('someapi/bearertokens')->getCollection()->getData();
         foreach ($tokens as $key => $token) {
             if($token['value'] == $this->bearer_token) {

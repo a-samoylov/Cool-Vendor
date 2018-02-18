@@ -1,10 +1,9 @@
 <?php
-
 define('ROOT', Mage::getBaseDir() . '\app\code\local\ASI\SomeAPI\Model');
 require_once ROOT . '\Auth\AuthFactory.php';
 require_once ROOT . '\Package\Package.php';
 require_once ROOT . '\APIProcess\APIProcessFactory.php';
-require_once ROOT . '\Definition\APIConfig.php';
+require_once ROOT . '\Definition\APIConfigFactory.php';
 require_once ROOT . '\Package\PackageFormat1Factory.php';
 
 use \SomeAPI\Model\Package\PackageFormat1Factory;
@@ -25,7 +24,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
         }
 
         $auth = (new AuthFactory())->create($package->get('bearer_token'));
-        if(!$auth->IsUserAuthorized()) {
+        if(!$auth->isUserAuthorized()) {
             //error
             echo json_encode(array("error" => "Invalid bearer token"));
             return;
@@ -38,7 +37,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
                 $package->get('params')
             );
 
-        try{
+        try {
             echo json_encode($apiProcess->startProcessing());
         } catch (Exception $exception) {
             echo json_encode(array("error" => $exception->getMessage()));

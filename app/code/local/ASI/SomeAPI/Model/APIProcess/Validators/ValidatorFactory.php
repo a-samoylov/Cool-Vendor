@@ -11,6 +11,12 @@ class ValidatorFactory {
     public function create($validator_name) {
         require_once $validator_name . '.php';
         $validator_class_name = $this->namespace_validator . $validator_name;
-        return new $validator_class_name();
+        $validator = new $validator_class_name();
+
+        if(!($validator instanceof ValidatorInterface)) {
+            throw new \Exception("Invalid type validator!");
+        }
+
+        return $validator;
     }
 }

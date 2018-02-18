@@ -1,8 +1,6 @@
 <?php
 namespace SomeAPI\Model\Package;
 
-use Couchbase\Exception;
-
 require_once 'Package.php';
 
 class PackageFormat1Factory {
@@ -23,7 +21,6 @@ class PackageFormat1Factory {
         if($paramsPackage['command'] == '') {
             throw new \Exception('Invalid command');
         }
-
 
         return new Package(
             $bearer_token,

@@ -2,66 +2,25 @@
 namespace SomeAPI\Model\Definition;
 
 class APIConfig {
-    private $configs_api = [];//config api from xml
+    private $handler_name;
+    private $validators_names;
+    private $params;
 
-    public function __construct($configs_api) {
-        //Get config api from xml
-        foreach ($configs_api as $key_api => $api) {
-            foreach ($api as $key_commands => $commands) {
-                if($key_commands == 'version'){
-                    continue;
-                }
-
-                $list_commands = [];
-
-                foreach ($commands as $key_command => $command) {
-                    $validators = [];
-
-                    foreach ($command['validators'] as $key_validators => $validator) {
-                        $validators[] = $validator;
-                    }
-                    $list_commands[] = array(
-                        'name'       => $command['name'],
-                        'handler'    => $command['handler'],
-                        'validators' => $validators
-                    );
-                }
-            }
-
-            $this->configs_api[] = array(
-                'version'           => $api['version'],
-                'list_commands'    => $list_commands
-            );
-        }
+    public function __construct($handler_name, $validators_names, $params) {
+        $this->handler_name       = $handler_name;
+        $this->validators_names   = $validators_names;
+        $this->properties         = $params;
     }
 
-    //TODO Refactoring
-    public function getHandler($version, $command) {
-        for ($i = 0; $i < count($this->configs_api); $i++ ) {
-            if($this->configs_api[$i]['version'] == $version) {
-                for ($j = 0; $j < count($this->configs_api[$i]['list_commands']); $j++ ) {
-                    if($this->configs_api[$i]['list_commands'][$j]['name'] == $command) {
-                        return $this->configs_api[$i]['list_commands'][$j]['handler'];
-                    }
-                }
-            }
-        }
-
-        return '';
+    public function getHandler() {
+        return $this->handler_name;
     }
 
-    //TODO Refactoring
-    public function getValidators($version, $command) {
-        for ($i = 0; $i < count($this->configs_api); $i++ ) {
-            if($this->configs_api[$i]['version'] == $version) {
-                for ($j = 0; $j < count($this->configs_api[$i]['list_commands']); $j++ ) {
-                    if($this->configs_api[$i]['list_commands'][$j]['name'] == $command) {
-                        return $this->configs_api[$i]['list_commands'][$j]['validators'];
-                    }
-                }
-            }
-        }
+    public function getValidators() {
+        return $this->validators_names;
+    }
 
-        return [];
+    public function getProperies() {
+        return $this->properties;
     }
 }

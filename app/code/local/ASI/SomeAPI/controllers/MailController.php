@@ -16,9 +16,5 @@ class ASI_SomeAPI_MailController extends Mage_Core_Controller_Front_Action {
         } catch (Exception $exception) {
             echo  $exception->getMessage();
         }
-
-
-
-
     }
 }
