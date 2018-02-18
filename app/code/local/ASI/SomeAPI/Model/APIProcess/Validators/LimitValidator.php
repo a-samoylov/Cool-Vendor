@@ -3,7 +3,7 @@ namespace SomeAPI\Model\APIProcess\Validators;
 
 require_once 'ValidatorInterface.php';
 
-class GetProductsValidator implements ValidatorInterface {
+class LimitValidator implements ValidatorInterface {
 
     const LIMIT_MIN = 1;
     const LIMIT_MAX = 1000;
@@ -12,11 +12,11 @@ class GetProductsValidator implements ValidatorInterface {
 
     }
 
-    public function Validate($params)
+    public function validate($params)
     {
         if(isset($params->limit) &&
-            $params->limit >= GetProductsValidator::LIMIT_MIN &&
-            $params->limit <= GetProductsValidator::LIMIT_MAX){
+            $params->limit >= LimitValidator::LIMIT_MIN &&
+            $params->limit <= LimitValidator::LIMIT_MAX){
 
             return true;
         }

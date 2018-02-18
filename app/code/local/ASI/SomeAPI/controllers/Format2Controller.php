@@ -14,6 +14,13 @@ use \SomeAPI\conrollers\Exception\Exception;
 
 class ASI_SomeAPI_Format2Controller extends Mage_Core_Controller_Front_Action {
     public function indexAction() {
+
+        /*$Mage::helper('someapi')->arrayToXml(
+        array(
+            'error' => $this->error)
+        )*/
+
+
         /*$dataPOST = trim(file_get_contents('php://input'));
         $dataPOST = json_decode($dataPOST);
 

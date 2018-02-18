@@ -13,10 +13,6 @@ class Exception {
     }
 
     public function PrintExeptionXML($Mage) {
-        die($Mage::helper('someapi')->arrayToXml(
-            array(
-                'error' => $this->error)
-            )
-        );
+
     }
 }

@@ -16,7 +16,6 @@ use \SomeAPI\Model\Package\PackageFormat1Factory;
 class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
     public function indexAction() {
 
-
         try {
             $input_params = $this->getRequest()->getParams();
             $package = (new PackageFormat1Factory)->create(
@@ -24,31 +23,29 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
                 $input_params
             );
 
-        } catch(Exception $exception) {//Mage_Core_Exception $e
-            //new (Exception($exception->getMessage())->PrintExeptionJSON();
+        } catch(Exception $exception) {
+            echo json_encode(array("error" => $exception->getMessage()));
+            return;
         }
 
-
-
-        $auth = new Auth(Mage, $package->get('bearer_token'));
+        $auth = new Auth($package->get('bearer_token'));
         if(!$auth->IsUserAuthorized()) {
             //error
-            //(new Exception("Not valid bearer token"))->PrintExeptionJSON();
+            echo json_encode(array("error" => "Invalid bearer token"));
+            return;
         }
-die("asd");
+
         $apiProcess = new APIProcess(
-            Mage,
             $package->get('version'),
             $package->get('command'),
             $package->get('params')
         );
 
-        $response = $apiProcess->startProcessing();
-        if(is_array($response)) {
-            echo json_encode($response);
-        } else {
-            //error not found command or invalid params
-            (new Exception("Not found command in this version api or invalid params"))->PrintExeptionJSON();
+        try{
+            echo json_encode($apiProcess->startProcessing());
+        } catch (Exception $exception) {
+            echo json_encode(array("error" => $exception->getMessage()));
+            return;
         }
     }
 }

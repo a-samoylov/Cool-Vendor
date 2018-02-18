@@ -1,7 +1,7 @@
 <?php
-namespace SomeAPI\conrollers\APIProcess\Handlers;
+namespace SomeAPI\Model\APIProcess\Handlers;
 
 interface HandlerInterface
 {
-    public function Run($Mage, $params);
+    public function run($params);
 }

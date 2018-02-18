@@ -74,7 +74,7 @@
                     <name>GetProducts22</name>
                     <handler>GetProductHandler</handler>
                     <validators>
-                        <validator>GetProductsValidator</validator>
+                        <validator>LimitValidator</validator>
                     </validators>
                     <properties>
 
@@ -90,11 +90,10 @@
                     <name>GetProducts</name>
                     <handler>GetProductsHandler</handler>
                     <validators>
-                        <validator1>GetProductsValidator</validator1>
-                        <validator2>GetProductsValidator</validator2>
+                        <validator1>LimitValidator</validator1>
                     </validators>
                     <properties>
-
+                        <sort>DESC</sort>
                     </properties>
                 </command2>
             </list_commands>

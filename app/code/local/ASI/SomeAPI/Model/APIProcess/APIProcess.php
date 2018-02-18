@@ -2,48 +2,39 @@
 namespace SomeAPI\Model\APIProcess;
 
 require_once 'Handlers/HandlerFactory.php';
-require_once 'Validators/ValidatorsFactory.php';
+require_once 'Validators/ValidatorFactory.php';
 
-use SomeAPI\conrollers\APIProcess\Handlers\HandlerFactory;
-use SomeAPI\conrollers\APIProcess\Validators\ValidatorsFactory;
-use SomeAPI\conrollers\Definition\APIConfig;
+use SomeAPI\Model\APIProcess\Handlers\HandlerFactory;
+use SomeAPI\Model\APIProcess\Validators\ValidatorFactory;
+use SomeAPI\Model\Definition\APIConfig;
 
 class APIProcess {
-    private $handler;
-    private $validators;
+    private $handler_name;
+    private $validators_names = [];
     private $params;
-    private $Mage;
 
-    public function __construct($Mage, $version, $command, $params) {
-        $this->Mage = $Mage;
+    public function __construct($version, $command, $params) {
         $api_configs = new APIConfig(
-            $Mage::getConfig()->getNode('API')->asArray()
+            \Mage::getConfig()->getNode('API')->asArray()
         );
 
-        $this->params       = $params;
-        $this->handler      = $api_configs->GetHandler($version, $command);
-        $this->validators   = $api_configs->GetValidators($version, $command);
+        $this->params               = $params;
+        $this->handler_name         = $api_configs->getHandler($version, $command);
+        $this->validators_names     = $api_configs->getValidators($version, $command);
     }
 
     //return array or if exeption false
-    public function StartProcessing() {
-        if($this->handler == '') {
-            //error no handler
-            return false;
-        }
-
-        //create validators
-        $validators = (new ValidatorsFactory())->Create($this->validators);
-
-        foreach ($validators as $key => $validator) {
-            if(!$validator->Validate($this->params)) {
+    public function startProcessing() {
+        foreach ($this->validators_names as $key => $validatorsName) {
+            $validator = (new ValidatorFactory())->create($validatorsName);
+            if(!$validator->validate($this->params)) {
                 //error validate
-                return false;
+                throw new \Exception('Invalid params');
             }
         }
 
         //create handler
-        $handler = (new HandlerFactory())->create($this->handler);
-        return $handler->Run($this->Mage, $this->params);
+        $handler = (new HandlerFactory())->create($this->handler_name);
+        return $handler->run($this->params);
     }
 }
