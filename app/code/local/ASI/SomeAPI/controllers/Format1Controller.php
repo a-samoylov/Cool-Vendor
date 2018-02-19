@@ -15,7 +15,7 @@ class ASI_SomeAPI_Format1Controller extends Mage_Core_Controller_Front_Action {
         try {
             $input_params = $this->getRequest()->getParams();
             $package = (new PackageFormat1Factory)->create(
-                '123',//$this->getRequest()->getHeader('someapi_bearer_token'),
+                $this->getRequest()->getHeader('someapi_bearer_token'),
                 $input_params
             );
         } catch (Exception $exception) {
