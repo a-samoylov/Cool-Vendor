@@ -25,7 +25,10 @@ This application has two protocol.
 
 GET:
 ```
-http://somehost.com/magento/someapi/format1?params={"limit":"100"}&command=GetProducts&version=1.0
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'format1?params={"limit":"100"}&command=GetProducts&version=1.0', true);
+xhr.setRequestHeader('someapi_bearer_token', '58trbv2fuaw9egsa');
+xhr.send();
 ```
 
 POST:
