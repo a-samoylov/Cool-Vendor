@@ -1,19 +1,22 @@
 <?php
+
 namespace SomeAPI\Model\Mail;
 
 require_once 'MailServer.php';
 
-class MailServerFactory {
+class MailServerFactory
+{
 
-    public function __construct() {
-
+    public function __construct()
+    {
     }
 
-    public function create($name, $description) {
-        if($name == '') {
+    public function create($name, $description)
+    {
+        if ($name == '') {
             throw new \Exception('Invalid name');
         }
-        if($description == '') {
+        if ($description == '') {
             throw new \Exception('Invalid description');
         }
 

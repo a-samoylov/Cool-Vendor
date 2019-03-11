@@ -8,11 +8,11 @@ class ASI_SomeAPI_Block_Button extends Mage_Adminhtml_Block_System_Config_Form_F
         $url = $this->getUrl('someapi/mail');
 
         $html = $this->getLayout()->createBlock('adminhtml/widget_button')
-                    ->setType('button')
-                    ->setClass('scalable')
-                    ->setLabel('Send report')
-                    ->setOnClick("setLocation('$url')")
-                    ->toHtml();
+                     ->setType('button')
+                     ->setClass('scalable')
+                     ->setLabel('Send report')
+                     ->setOnClick("setLocation('$url')")
+                     ->toHtml();
 
         return $html;
     }

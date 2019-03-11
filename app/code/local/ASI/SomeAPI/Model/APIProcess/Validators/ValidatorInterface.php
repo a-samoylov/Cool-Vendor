@@ -1,4 +1,5 @@
 <?php
+
 namespace SomeAPI\Model\APIProcess\Validators;
 
 interface ValidatorInterface

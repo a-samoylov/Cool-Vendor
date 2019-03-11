@@ -1,18 +1,22 @@
 <?php
+
 namespace SomeAPI\Model\Mail;
 
-class MailServer {
+class MailServer
+{
     private $email;
     private $name;
     private $description;
 
-    public function __construct($email, $name, $description) {
-        $this->email        = $email;
-        $this->name         = $name;
-        $this->description  = $description;
+    public function __construct($email, $name, $description)
+    {
+        $this->email       = $email;
+        $this->name        = $name;
+        $this->description = $description;
     }
 
-    public function sendEmail() {
+    public function sendEmail()
+    {
         $text = "Name '$this->name' Description '$this->description'";
 
         $mail = \Mage::getModel('core/email');
@@ -22,8 +26,7 @@ class MailServer {
 
         try {
             $mail->send();
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             throw new \Exception('Error mail don\'t send');
         }
     }

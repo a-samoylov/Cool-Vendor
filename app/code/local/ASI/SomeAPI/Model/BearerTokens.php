@@ -1,5 +1,7 @@
 <?php
-class ASI_SomeAPI_Model_BearerTokens extends Mage_Core_Model_Abstract {
+
+class ASI_SomeAPI_Model_BearerTokens extends Mage_Core_Model_Abstract
+{
 
     public function _construct()
     {

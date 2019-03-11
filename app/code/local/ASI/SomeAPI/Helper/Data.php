@@ -1,6 +1,9 @@
 <?php
-class ASI_SomeAPI_Helper_Data extends Mage_Core_Helper_Abstract {
-    public function arrayToXml($array, $rootElement = null, $xml = null) {
+
+class ASI_SomeAPI_Helper_Data extends Mage_Core_Helper_Abstract
+{
+    public function arrayToXml($array, $rootElement = null, $xml = null)
+    {
         $_xml = $xml;
 
         if ($_xml === null) {
