@@ -1,13 +1,13 @@
 ## What is this?
 
-This project is a extension for magento 1.
+This project is a extension for Magento 1.
 
 Extension implements the work with the our API it is done for educational purposes.
 We can create different commands with alias and version command. 
 
 ### Installing
 
-Download magento 1.* and deploy extension files in magento.
+Download Magento 1.* and deploy extension files in magento.
 
 ```
 Download from https://magento.com/tech-resources/download
